@@ -15,15 +15,15 @@ function App() {
   return (
     <div className="text-gray-600 text-4xl">
       <Routes>
-      <Route path="/" element={<Login/>}/>
-          <Route path="/signup" element={<Signup/>}/>
-          <Route path="/home" element={<Home/>}/>
-        <Route path="/products/:id" element={<Product/>} />
-        <Route path="/products" element={<Pro/>} />
-        <Route path="/categories/:name" element={<CategoryProducts/>} />
-        <Route path="/Cart" element={<Cart/>} />
-        <Route path="*" element={<><Header/>
-        <div> Error 404</div></>} />
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/products/:id" element={<Product />} />
+        <Route path="/products" element={<Pro />} />
+        <Route path="/categories/:name" element={<CategoryProducts />} />
+        <Route path="/Cart" element={<Cart />} />
+        <Route path="*" element={<><Header />
+          <div> Error 404</div></>} />
       </Routes>
       <Footer />
     </div>

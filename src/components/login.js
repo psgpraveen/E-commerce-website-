@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState ,useContext } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
+import {Data} from './Context/Index'
 
 function Login() {
   const history = useNavigate();
-
+  const { login } = useContext(Data)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,14 +14,15 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8000/", {
+      const response = await axios.post("https://e-commerce-website-one-iota.vercel.app/", {
         email,
         password,
       });
 
       if (response.data.status === "success") {
         const da = response.data;
-        history("/home",{ state: { da } });
+        login(da);
+        history("/home");
       } else if (response.data.message === "Incorrect password") {
         alert("Password wrong");
       }

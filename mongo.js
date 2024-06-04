@@ -24,6 +24,6 @@ const newSchema = new mongoose.Schema({
   },
 });
 
-const collection = mongoose.model("collection", newSchema);
+const collection = mongoose.model("E-com", newSchema,"E-com");
 
 module.exports = collection;

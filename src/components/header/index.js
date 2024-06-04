@@ -1,11 +1,11 @@
-import React,{useEffect} from 'react';
+import React, { useEffect ,useContext} from 'react';
 import { Link } from 'react-router-dom';
-import image from './Psgpraveen.png';
-import { useLocation } from 'react-router-dom';
+// import image from './Psgpraveen.png';
+// import { useLocation } from 'react-router-dom';
+import {Data} from '../Context/Index'
 
+const header = ( ) => {
 
-const header = ({userName}) => {
-  
   const navigations = [
     {
       name: 'Home',
@@ -14,31 +14,26 @@ const header = ({userName}) => {
     {
       name: 'Products',
       path: '/products',
-    },
-    {
-      name: 'About',
-      path: '/about',
-    },
-    {
-      name: 'Contact',
-      path: '/contact',
-    },
+    }
+    
   ];
  
-    const location = useLocation();
-      const da = location.state.da;
-      useEffect(()=>{
-        console.log(da);
-      },[])
-    
-    return ( 
-      <header className="text-gray-600 p1 body-font">
-      <div className="container cursor-pointer mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <Link to={'/'} className="flex titleFont font-medium items-center text-gray-900 mb-4 md:mb-0">
-          <img src={image} width="40%" alt="Logo" />
+  // const location = useLocation();
+  const da = useContext(Data)
+  
+
+  useEffect(() => {
+    console.log(da);
+  }, [])
+
+  return (
+    <header className="text-gray-600 p1 body-font">
+      <div className="container cursor-pointer mx-auto flex justify-between flex-wrap p-5 flex-col md:flex-row items-center">
+        <Link to={'/'} className="flex justify-between font-medium items-center text-gray-900 mb-4 md:mb-0">
+          <img src="https://static.vecteezy.com/system/resources/previews/016/471/452/original/abstract-modern-ecommerce-logo-ecommerce-logo-design-shop-logo-design-template-creative-ecommerce-logo-vector.jpg" className='mix-blend-plus-darker' width={100} height={100} alt="Logo" />
           {/* <span className="ml-3 text-xl">Psg E-commerce</span> */}
         </Link>
-        <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <nav className=" flex flex-wrap items-center text-base justify-center">
           {
             navigations.map((navigation) => (
               <Link to={navigation.path} className="mr-5 hover:text-gray-900" key={navigation.name}>
@@ -61,11 +56,10 @@ const header = ({userName}) => {
             <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </Link>
-        {userName ? (
-          <span className="mx-2 text-2xl border-2 p-2 border-gray-100 rounded-full">{userName}</span>
-        ) : (
-          <span className="mx-2 p2 text-2xl border-2 p-2 border-gray-100 rounded-full">{da?.user?.name || da?.name}</span>
-        )}
+        
+
+          <span className="mx-2 p2 my-4 text-2xl border-2 p-2 border-gray-100 rounded-full">{da.da?.user?.name || da.da?.name}</span>
+     
       </div>
     </header>
   );
