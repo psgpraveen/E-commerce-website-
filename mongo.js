@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
+require('dotenv').config();
+const url = process.env.DATABASE_URL||"mongodb://0.0.0.0:27017/react-login"
 mongoose
-  .connect("mongodb://0.0.0.0:27017/react-login")
+  .connect(url)
   .then(() => {
     console.log("Mongodb connected");
   })
